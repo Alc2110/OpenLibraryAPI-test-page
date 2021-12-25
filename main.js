@@ -1,4 +1,7 @@
 async function searchByIsbn() {
+    // clear results
+    document.getElementById('results-section').innerHTML = 'Loading...';
+
     // grab inputs
     const isbn = document.getElementById('isbn').value;
 
@@ -7,8 +10,8 @@ async function searchByIsbn() {
         method: 'GET'
     });
     const json = await response.json();
-    const result = JSON.stringify(json);
-    
+    const result = JSON.stringify(json,null,4);
+
     // display the results
-    document.getElementById('results-section').innerHTML = result;
+    document.getElementById('results-section').innerHTML = '<pre><code class="prettyprint">' + result + '</code></pre>';
 }
